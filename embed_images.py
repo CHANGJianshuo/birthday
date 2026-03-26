@@ -64,6 +64,21 @@ html = re.sub(
     html
 )
 
+# Embed music files (mp3)
+def replace_music_src(match):
+    prefix = match.group(1)
+    path = match.group(2)
+    suffix = match.group(3)
+    data_uri = to_data_uri(path)
+    return f'{prefix}{data_uri}{suffix}'
+
+print("Embedding music...")
+html = re.sub(
+    r"(Audio\(')(music/[^']+)('\))",
+    replace_music_src,
+    html
+)
+
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     f.write(html)
 

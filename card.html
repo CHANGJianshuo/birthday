@@ -67,11 +67,10 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Noto Serif SC','Pi
 .bubble-date.show{opacity:1;transform:translateY(0)}
 
 /* Heart Gallery */
-.heart-bg{background:linear-gradient(180deg,#fff5f0,#fff0f5);position:relative}
-.heart-wrap{position:relative;width:300px;height:300px;margin:0 auto}
-.heart-photo{position:absolute;width:65px;height:65px;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(255,126,179,.25);border:2px solid #fff;cursor:pointer;transition:box-shadow .3s;animation:hfloat var(--fd) ease-in-out infinite;animation-delay:var(--fdy)}
-.heart-photo img{width:100%;height:100%;object-fit:cover;pointer-events:none}
-@keyframes hfloat{0%,100%{transform:translate(0,0)}50%{transform:translate(var(--hx),var(--hy))}}
+.heart-bg{background:linear-gradient(180deg,#fff5f0,#fff0f5)}
+.heart-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:320px;margin:15px auto;padding:0 10px}
+.heart-photo{width:70px;height:70px;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(255,126,179,.3);border:2px solid #fff;cursor:pointer;flex-shrink:0}
+.heart-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .heart-quote{margin-top:18px;font-size:15px;color:var(--pink-deep);text-align:center;font-weight:600;letter-spacing:1px}
 .photo-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;display:none;align-items:center;justify-content:center}
 .photo-overlay.active{display:flex}
@@ -97,6 +96,28 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Noto Serif SC','Pi
 .wish-message{font-size:15px;line-height:2;color:var(--text-dark);max-width:300px;margin:0 auto}
 .wish-from{margin-top:30px;font-size:14px;color:var(--text-mid);letter-spacing:2px}
 .wish-date{margin-top:8px;font-size:12px;color:var(--text-light)}
+
+.cake-area{text-align:center;margin-top:5px;position:relative}
+.candle-hint{font-size:13px;color:var(--text-mid);margin-bottom:8px;animation:bounce 2s infinite}
+.cake-body{display:inline-block;position:relative}
+.candles{display:flex;justify-content:center;gap:20px;margin-bottom:-2px;position:relative;z-index:2}
+.candle{display:flex;flex-direction:column;align-items:center}
+.candle-stick{width:6px;height:28px;background:linear-gradient(180deg,#ffd26a,#ffb347);border-radius:3px}
+.flame{width:10px;height:16px;background:radial-gradient(ellipse at center bottom,#fff 0%,#ffd26a 30%,#ff8a00 60%,#ff5e00 100%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;margin-bottom:2px;animation:flicker .3s ease-in-out infinite alternate;cursor:pointer;transition:opacity .5s,transform .5s}
+.flame.out{opacity:0;transform:scale(0) translateY(-10px);pointer-events:none}
+@keyframes flicker{0%{transform:scaleX(1) scaleY(1) rotate(-2deg)}100%{transform:scaleX(.85) scaleY(1.1) rotate(2deg)}}
+.flame-smoke{position:absolute;width:4px;height:4px;background:rgba(180,180,180,.6);border-radius:50%;animation:smokeUp 1s ease-out forwards;pointer-events:none}
+@keyframes smokeUp{0%{opacity:.8;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-30px) scale(2.5)}}
+.cake-top{width:120px;height:18px;background:linear-gradient(180deg,#fff0f5,#ffb6d3);border-radius:10px 10px 0 0;margin:0 auto;position:relative}
+.cake-top::before{content:'';position:absolute;top:3px;left:10px;right:10px;height:4px;background:repeating-linear-gradient(90deg,#ff7eb3,#ff7eb3 6px,transparent 6px,transparent 12px);border-radius:2px}
+.cake-mid{width:130px;height:28px;background:linear-gradient(180deg,#ffe4ef,#ffcba4);margin:0 auto;border-left:2px solid rgba(255,255,255,.5);border-right:2px solid rgba(255,255,255,.5)}
+.cake-mid::before{content:'';position:absolute;left:50%;transform:translateX(-50%);width:120px;height:3px;background:linear-gradient(90deg,#ffd26a,#ff7eb3,#ffd26a);margin-top:12px;border-radius:2px}
+.cake-bottom{width:140px;height:22px;background:linear-gradient(180deg,#ffcba4,#ffb6d3);border-radius:0 0 12px 12px;margin:0 auto;box-shadow:0 4px 12px rgba(255,126,179,.2)}
+.wish-stars{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.wish-star{position:absolute;font-size:18px;animation:wishFloat 2s ease-out forwards;pointer-events:none}
+@keyframes wishFloat{0%{opacity:1;transform:translateY(0) scale(0)}30%{opacity:1;transform:translateY(-20px) scale(1.2)}100%{opacity:0;transform:translateY(-80px) scale(.5)}}
+.wish-text-pop{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;font-size:16px;color:var(--pink-deep);font-weight:700;opacity:0;letter-spacing:2px;white-space:nowrap;animation:wishPop 2s ease-out forwards;animation-delay:.5s}
+@keyframes wishPop{0%{opacity:0;transform:translateX(-50%) scale(.5)}40%{opacity:1;transform:translateX(-50%) scale(1.1)}100%{opacity:1;transform:translateX(-50%) scale(1)}}
 
 .music-btn{position:fixed;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--pink-light);background:rgba(255,255,255,.7);color:var(--pink-deep);font-size:16px;cursor:pointer;z-index:200;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
 .music-btn.playing{animation:spin 3s linear infinite}
@@ -224,7 +245,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Noto Serif SC','Pi
 &#x8BA4;&#x8BC6;&#x4F60;&#x7B2C;&#x4E8C;&#x5341;&#x4E03;&#x5929;<br>
 &#x6211;&#x5DF2;&#x7ECF;&#x4E60;&#x60EF;&#x4E86;<br>
 &#x5348;&#x4F11;&#x7B2C;&#x4E00;&#x65F6;&#x95F4;&#x627E;&#x4F60;&#x804A;&#x5929;<br>
-&#x51CC;&#x6668;&#x4E24;&#x70B9;&#x8BF4;&#x5230;&#x5BB6;&#x4E86;&#x624D;&#x6302;&#x7535;&#x8BDD;<br>
+每天夜晚都一起入梦<br>
 &#x5728;&#x56FE;&#x4E66;&#x9986;&#x504F;&#x8981;&#x53D1;&#x6D88;&#x606F;&#x7ED9;&#x4F60;<br>
 &#x770B;&#x5230;&#x82B1;&#x5F00;&#x4E86;&#x60F3;&#x62CD;&#x7ED9;&#x4F60;<br>
 &#x5403;&#x5230;&#x597D;&#x5403;&#x7684;&#x4E5F;&#x60F3;&#x62CD;&#x7ED9;&#x4F60;<br><br>
@@ -232,7 +253,6 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Noto Serif SC','Pi
 &#x4F60;&#x5728;&#x51C6;&#x5907;&#x660E;&#x5929;&#x7684;&#x8003;&#x8BD5;<br>
 &#x6211;&#x5728;&#x9999;&#x6E2F;&#x60F3;&#x4F60;<br><br>
 &#x4EE5;&#x540E;&#x7684;&#x65E5;&#x5B50;<br>
-&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x540C;&#x4E00;&#x5EA7;&#x57CE;&#x5E02;<br>
 &#x6211;&#x5F53;&#x4F60;&#x7684;&#x5C0F;&#x72D7;<br>
 &#x4F60;&#x5F53;&#x6211;&#x7684;&#x96C5;&#x96C5;<br>
 &#x4E00;&#x76F4;&#x4E00;&#x76F4;
@@ -241,8 +261,41 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Noto Serif SC','Pi
     <div class="heart-quote" style="margin-top:20px">&#x4E0D;&#x7BA1;&#x6674;&#x5929;&#x9634;&#x5929;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x8D77;&#x8DE8;&#x8FC7;</div>
   </div>
 
-  <!-- 8: Wish -->
-  <div class="page wish-bg" data-page="8">
+  <!-- 8: Birthday Blessings -->
+  <div class="page poem-bg" data-page="8">
+    <div class="section-title">&#127873; 给雅雅的生日祝福</div>
+    <div class="poem-box" style="margin-bottom:12px">
+      <div class="poem-text" style="font-size:15px;line-height:2.2;text-align:center">
+今天是属于你的日子<br>
+我想把所有的好运都打包送给你<br><br>
+&#127874; 愿你新的一岁<br>
+事事顺心 万事胜意<br>
+工作顺利 前程似锦<br>
+身体健康 平安喜乐<br><br>
+&#127880; 愿你永远被爱包围<br>
+笑容比蛋糕上的奶油还甜<br>
+每一天都是值得庆祝的日子<br><br>
+生日快乐，雅雅~
+      </div>
+    </div>
+    <div class="cake-area" id="cakeArea">
+      <div class="candle-hint" id="candleHint">&#x1F449; 点击蜡烛许个愿吧</div>
+      <div class="cake-body">
+        <div class="candles" id="candles">
+          <div class="candle"><div class="flame" data-c="0"></div><div class="candle-stick"></div></div>
+          <div class="candle"><div class="flame" data-c="1"></div><div class="candle-stick"></div></div>
+          <div class="candle"><div class="flame" data-c="2"></div><div class="candle-stick"></div></div>
+        </div>
+        <div class="cake-top"></div>
+        <div class="cake-mid"></div>
+        <div class="cake-bottom"></div>
+      </div>
+      <div class="wish-stars" id="wishStars"></div>
+    </div>
+  </div>
+
+  <!-- 9: Wish -->
+  <div class="page wish-bg" data-page="9">
     <canvas class="fireworks-canvas" id="fireworksCanvas"></canvas>
     <div class="wish-content">
       <div class="wish-cake">&#127874;</div>
@@ -280,6 +333,7 @@ function goToPage(n){
   pages[currentPage].style.transform=dir>0?'translateY(-40px)':'translateY(40px)';
   pages[currentPage].style.opacity='0';
   currentPage=n;pages[currentPage].classList.add('active');
+  pages[currentPage].style.opacity='1';pages[currentPage].style.transform='translateY(0)';
   updateDots();onPageEnter(currentPage);
   document.getElementById('navHint').style.display='';
   setTimeout(()=>{isTransitioning=false},800);
@@ -298,7 +352,7 @@ const petalsEl=document.getElementById('petals');
 
 function onPageEnter(pg){
   if(pg===1)animateStats();if(pg===2)animateKeywords();if(pg===3)animateBubbles();
-  if(pg===4)layoutHeart();if(pg===5)animateChart();if(pg===8)startFireworks();
+  if(pg===4)layoutHeart();if(pg===5)animateChart();if(pg===9)startFireworks();
 }
 
 function animateStats(){pages[1].querySelectorAll('.stat-card').forEach((c,i)=>setTimeout(()=>c.classList.add('show'),i*120))}
@@ -318,26 +372,9 @@ function animateBubbles(){pages[3].querySelectorAll('.bubble,.bubble-date').forE
 let heartDone=false;
 function layoutHeart(){
   if(heartDone)return;heartDone=true;
-  const photos=document.querySelectorAll('.heart-photo');
-  const n=photos.length;
-  const cw=300,ch=300;
-  photos.forEach((el,i)=>{
-    const t=-Math.PI/2+(Math.PI*2/n)*i;
-    const sx=16*Math.pow(Math.sin(t),3);
-    const sy=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
-    const px=cw/2+sx*(cw/42)-32;
-    const py=ch/2+sy*(ch/42)-32;
-    el.style.left=px+'px';el.style.top=py+'px';
-    el.style.setProperty('--fd',(3+Math.random()*2)+'s');
-    el.style.setProperty('--fdy',(Math.random()*2)+'s');
-    el.style.setProperty('--hx',(Math.random()*6-3)+'px');
-    el.style.setProperty('--hy',(Math.random()*6-3)+'px');
-    el.style.opacity='0';
-    setTimeout(()=>{el.style.transition='opacity .5s';el.style.opacity='1'},i*80);
-    // Click to enlarge
+  document.querySelectorAll('.heart-photo').forEach(el=>{
     el.addEventListener('click',()=>{
-      const src=el.querySelector('img').src;
-      document.getElementById('overlayImg').src=src;
+      document.getElementById('overlayImg').src=el.querySelector('img').src;
       document.getElementById('photoOverlay').classList.add('active');
     });
   });
@@ -372,16 +409,58 @@ function startFireworks(){
   })();
 }
 
-let audioCtx=null,musicPlaying=false,musicTimeout=null;
-const notes=[[262,.3,0],[262,.3,.35],[294,.6,.7],[262,.6,1.4],[349,.6,2.1],[330,1,2.8],[262,.3,4],[262,.3,4.35],[294,.6,4.7],[262,.6,5.4],[392,.6,6.1],[349,1,6.8],[262,.3,8],[262,.3,8.35],[523,.6,8.7],[440,.6,9.4],[349,.6,10.1],[330,.6,10.8],[294,1,11.5],[466,.3,12.8],[466,.3,13.15],[440,.6,13.5],[349,.6,14.2],[392,.6,14.9],[349,1.2,15.6]];
-function playMelody(){
-  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-  const now=audioCtx.currentTime;
-  notes.forEach(([f,d,s])=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,now+s);g.gain.linearRampToValueAtTime(.12,now+s+.05);g.gain.setValueAtTime(.12,now+s+d-.1);g.gain.linearRampToValueAtTime(0,now+s+d);o.connect(g);g.connect(audioCtx.destination);o.start(now+s);o.stop(now+s+d+.01);const o2=audioCtx.createOscillator(),g2=audioCtx.createGain();o2.type='triangle';o2.frequency.value=f*1.5;g2.gain.setValueAtTime(0,now+s);g2.gain.linearRampToValueAtTime(.03,now+s+.05);g2.gain.setValueAtTime(.03,now+s+d-.1);g2.gain.linearRampToValueAtTime(0,now+s+d);o2.connect(g2);g2.connect(audioCtx.destination);o2.start(now+s);o2.stop(now+s+d+.01)});
-  if(musicPlaying)musicTimeout=setTimeout(playMelody,17500);
-}
-function startMusic(){if(musicPlaying)return;musicPlaying=true;document.getElementById('musicBtn').classList.add('playing');playMelody()}
-function stopMusic(){musicPlaying=false;document.getElementById('musicBtn').classList.remove('playing');if(musicTimeout)clearTimeout(musicTimeout)}
+// Candle blow interaction
+let candlesOut=0;
+document.querySelectorAll('.flame').forEach(fl=>{
+  fl.addEventListener('click',function(){
+    if(this.classList.contains('out'))return;
+    this.classList.add('out');
+    // Smoke effect
+    const rect=this.getBoundingClientRect();
+    const area=document.getElementById('cakeArea');
+    const areaRect=area.getBoundingClientRect();
+    for(let i=0;i<3;i++){
+      const smoke=document.createElement('div');
+      smoke.className='flame-smoke';
+      smoke.style.left=(rect.left-areaRect.left+3+Math.random()*4)+'px';
+      smoke.style.top=(rect.top-areaRect.top)+'px';
+      smoke.style.animationDelay=(i*0.15)+'s';
+      area.appendChild(smoke);
+      setTimeout(()=>smoke.remove(),1200);
+    }
+    candlesOut++;
+    if(candlesOut>=3){
+      document.getElementById('candleHint').textContent='';
+      // Trigger wish animation
+      setTimeout(()=>{
+        const stars=document.getElementById('wishStars');
+        const emojis=['✨','🌟','💖','🎀','🧁','💫','🎉','🎈'];
+        for(let i=0;i<15;i++){
+          setTimeout(()=>{
+            const s=document.createElement('div');
+            s.className='wish-star';
+            s.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+            s.style.left=(10+Math.random()*80)+'%';
+            s.style.top=(20+Math.random()*60)+'%';
+            s.style.fontSize=(14+Math.random()*14)+'px';
+            stars.appendChild(s);
+            setTimeout(()=>s.remove(),2500);
+          },i*150);
+        }
+        // Show wish text
+        const txt=document.createElement('div');
+        txt.className='wish-text-pop';
+        txt.textContent='🎂 愿所有美好都如期而至 🎂';
+        document.getElementById('cakeArea').appendChild(txt);
+      },400);
+    }
+  });
+});
+
+const bgm=new Audio('music/birthday_small.mp3');
+bgm.loop=true;bgm.preload='auto';let musicPlaying=false;
+function startMusic(){if(musicPlaying)return;musicPlaying=true;document.getElementById('musicBtn').classList.add('playing');bgm.currentTime=0;var p=bgm.play();if(p)p.catch(()=>{bgm.addEventListener('canplaythrough',()=>{bgm.play()},{once:true})})}
+function stopMusic(){musicPlaying=false;document.getElementById('musicBtn').classList.remove('playing');bgm.pause()}
 document.getElementById('musicBtn').addEventListener('click',()=>{musicPlaying?stopMusic():startMusic()});
 </script>
 </body>
