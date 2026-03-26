@@ -357,7 +357,7 @@ function onPageEnter(pg){
 
 function animateStats(){pages[1].querySelectorAll('.stat-card').forEach((c,i)=>setTimeout(()=>c.classList.add('show'),i*120))}
 
-const keywords=[{word:'嗯嗯',count:285},{word:'好呢',count:213},{word:'姐姐',count:181},{word:'好哒',count:73},{word:'hhh',count:68},{word:'好滴',count:54},{word:'好吃',count:43},{word:'图书馆',count:43},{word:'吃饭',count:28},{word:'想你',count:17},{word:'开心',count:11},{word:'加油',count:6}];
+const keywords=[{word:'嗯嗯~',count:285},{word:'好呢',count:213},{word:'姐姐',count:181},{word:'好哒',count:73},{word:'hhh',count:68},{word:'好滴',count:54},{word:'好吃',count:43},{word:'图书馆',count:43},{word:'吃饭',count:28},{word:'想你',count:17},{word:'开心',count:11},{word:'加油',count:6}];
 function animateKeywords(){
   const list=document.getElementById('keywordList');
   if(list.children.length>0){list.querySelectorAll('.keyword-row').forEach((r,i)=>{r.classList.remove('show');setTimeout(()=>r.classList.add('show'),i*100)});setTimeout(()=>{list.querySelectorAll('.keyword-bar').forEach(b=>{b.style.width=b.dataset.width})},300);return}
